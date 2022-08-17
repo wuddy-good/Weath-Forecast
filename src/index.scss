@@ -1,27 +1,10 @@
-body{
-    margin: 0;
-    background-color:#7492a5
-}
-p{
-    margin: 0;
-    padding: 0;
-}
-h1{
-    margin: 0;
-    padding: 0;
-}
-span{
-    margin: 0;
-    padding: 0; 
-}
-div{
-    margin: 0;
-    padding: 0; 
-}
-img{
-    margin: 0;
-    padding: 0; 
-}
-li{
-    list-style-type: none
+.app{
+    max-width: 1920px;
+    height: 1080px;
+    background-image: url(./assets/cold-bg.jpg);
+    background-size: cover;
+    background-position: bottom;
+    transition: 0.4 ease;
+    display: flex;
+    
 }

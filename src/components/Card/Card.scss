@@ -1,0 +1,32 @@
+.card{
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    background-color: inherit;
+    text-align: center;
+    margin: 150px  auto 0 auto;
+    &__location{
+        .location{
+            font-weight: 1000;
+            font-size: 50px;
+        }
+        .date{
+            font-weight: 1000;
+            font-size: 20px;
+        }
+    }
+    &__temperature{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        p{
+            font-weight: 1000;
+            font-size: 50px;
+        }
+    }
+    &__desrc{
+        font-weight: 7000;
+        font-size: 30px;
+        
+    }
+}
