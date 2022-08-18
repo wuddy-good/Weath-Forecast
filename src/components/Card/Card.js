@@ -2,18 +2,17 @@ import { Component } from "react";
 import "./Card.scss";
 class  Card extends Component{
     render(){
-        const {getResult} = this.props;
+        const {temp, city,desrc} = this.props;
         return(
             <div className="card">
                 <div className="card__location">
-                    <div className="location">{getResult.name}</div>
+                    <div className="location">{city}</div>
                     <div className="date">Wednesday 17 Agust 2022</div>
                 </div>
                 <div className="card__temperature">
-                    <p>{getResult.temp}</p>
-                    <p>°C</p>
+                    <p>{temp}  °C</p>
                 </div>
-                <p className="card__desrc">{getResult.description}</p>
+                <p className="card__desrc">{desrc}</p>
             </div>
         )
     }

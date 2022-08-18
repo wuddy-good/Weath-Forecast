@@ -1,30 +1,43 @@
 import { Component } from 'react';
 import Card from '../components/Card/Card';
-import SearchPanel from '../components/SearcPanel/SearchPanel';
-import WeatherServices from '../services/WeatherServices';
+import Form from '../components/Form/Form';
 class App extends Component{
     state={
-      res: {}
+      temperature: 274,
+      city: undefined,
+      desrc: undefined,
+      country: undefined,
+      error: undefined
     }
-    weatherServices = new WeatherServices();
-    getWeather =(name) =>{
-      this.setState({res:this.weatherServices.getResurse(name)});
+    _base = "https://api.openweathermap.org/data/2.5/"
+    _key = "3f0528f8a28d5803eeaf7fc72f442bd4"
+    getResurse = async(e) =>{
+        e.preventDefault();
+        let city= e.target.elements.city.value;
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this._key}`);
+        const data = await response.json();
+        if (response.ok) { 
+            this.setState({ 
+              city: data.name,
+              desrc: data.weather[0].description,
+              error: undefined,
+              temperature: data.main.temp})
+          } else {
+            alert("Помилка HTTP: " + response.status);
+          }
     }
-    getResult =() =>{
-      return({
-        description: this.res.weather.main,
-        temp: Math.floor(this.res.main.temp),
-        name: this.res.name
-      }
-        
-      )
-    }
+
   render(){
     return (
       <div className="app">
         <main>
-          <SearchPanel getWeather={this.getWeather}/>
-          <Card getResult={this.getResult}/>
+          <Form weatherMethod={this.getResurse} />
+          <Card 
+            temp={this.state.temperature}
+            city={this.state.city}
+            desrc= {this.state.desrc}
+            error={this.state.error}
+          />
         </main>
       </div>
     )
